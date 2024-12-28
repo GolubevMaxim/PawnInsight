@@ -1,6 +1,13 @@
-def main():
-    print("Welcome to PawnInsight!")
+import uvicorn
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/")
+async def root():
+    return {"ok": True}
 
 
 if __name__ == "__main__":
-    main()
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=True)
